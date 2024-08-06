@@ -194,22 +194,34 @@ form:hover::before {
     object-position: left;
 }
 
-.overlay {
+.red-overlay {
     position: absolute;
     top: calc(50% + 75px);
     left: calc(50% - 10px);
     transform: translate(-50%, -50%);
-    /* Center the overlay */
-    /* background-color: rgba(0, 0, 0, 0.5); */
-    /* Semi-transparent background */
     color: black;
-    /* Text color */
     padding: 20px;
-    /* Padding around the text */
     border-radius: 10px;
-    /* Optional: Rounded corners */
     text-align: center;
-    /* Center the text inside the overlay */
+}
+
+.white-overlay {
+    position: absolute;
+    top: calc(50% + 155px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+
+    p {
+        font-size: 14px;
+    }
+
+    .wine-year {
+        font-size: 12px;
+    }
 }
 
 .region-details,
@@ -222,5 +234,60 @@ form:hover::before {
     font-family: "Tenor Sans", sans-serif;
     font-weight: 400;
     font-style: normal;
-  }
-  
+}
+
+.graph-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: #282828;
+    text-transform: uppercase;
+    margin: 20px 0;
+}
+
+.graph-bar {
+    height: 14px;
+    background: #282828;
+    border-radius: 3px;
+}
+
+.graph-per {
+    height: 14px;
+    background: #d13639;
+    border-radius: 3px;
+    position: relative;
+    animation: fillBars 3s 1;
+}
+
+.graph-per::before {
+    content: attr(per);
+    position: absolute;
+    padding: 4px 6px;
+    background: #f1f1f1;
+    border-radius: 4px;
+    font-size: 12px;
+    top: -35px;
+    right: 0;
+    transform: translateX(50%);
+}
+
+.graph-per::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #f1f1f1;
+    top: -16px;
+    right: 0;
+    transform: translateX(50%) rotate(45deg);
+    border-radius: 2px;
+}
+
+@keyframes fillBars {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}

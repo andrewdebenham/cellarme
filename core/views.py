@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Wine
+from .forms import WineForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView
 from django.contrib.auth.views import LoginView
@@ -36,7 +37,8 @@ def wine_index(request):
 
 class WineCreate(LoginRequiredMixin, CreateView):
     model = Wine
-    fields = ['producer', 'variety', 'year', 'style', 'country', 'region', 'months']
+    form_class = WineForm
+    template_name = 'core/wine_form.html'
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -49,7 +51,8 @@ def wine_detail(request, wine_id):
 
 class WineUpdate(LoginRequiredMixin, UpdateView):
     model = Wine
-    fields = ['producer', 'variety', 'year', 'style', 'country', 'region', 'months']
+    form_class = WineForm
+    template_name = 'core/wine_form.html'
 
 class WineDelete(LoginRequiredMixin, DeleteView):
     model = Wine

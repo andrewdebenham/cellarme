@@ -5,17 +5,24 @@
 {% endblock %}
 {% block content %}
 <div class="wine-bottle-container">
-    <img
-        src="{% static 'images/red-wine-bottle-3.svg' %}" alt="CellarMe Logo"
-        class="wine-bottle-image"
-    />
-    <div class="overlay flex flex-col justify-center items-center tenor-sans-regular">
-        <p class="mb-4">{{ wine.producer }}</p>
+    {% if wine.style == 'Red' %}
+        <img
+            src="{% static 'images/red-wine-bottle-3.svg' %}" alt="CellarMe Logo"
+            class="wine-bottle-image"
+        />
+    {% else %}
+        <img
+            src="{% static 'images/white-wine-bottle-2.svg' %}" alt="CellarMe Logo"
+            class="wine-bottle-image"
+        />
+    {% endif %}
+    <div class="{% if wine.style == 'White' %}white-overlay{% else %}red-overlay{% endif %} flex flex-col justify-center items-center tenor-sans-regular">
+        <p class="mb-2">{{ wine.producer }}</p>
         <img
             src="{% static 'images/tree-svgrepo-com.svg' %}" alt="Wine Bottle Logo"
-            class="w-[75px] h-[75px] mb-4"
+            class="w-[65px] h-[65px] mb-3"
         />
-        <p class="text-xs">{{ wine.year }}</p>
+        <p class="wine-year text-xs">{{ wine.year }}</p>
         <p class="italic">{{ wine.region }}</p>
         <p>{{ wine.variety}}</p>
     </div>
@@ -36,8 +43,13 @@
                 <p>Image PLaceholder</p>
             </div>
         </div>
-        <div class="timeline-container h-[250px]">
-            <p>Timeline coming soon ---------------------------------------------------------------</p>
+        <div class="progress-container h-[250px]">
+            <div class="graph">
+                <div class="graph-name">Ageing Progress</div>
+                <div class="graph-bar">
+                    <div class="graph-per" per="{{wine.ageing_progress|floatformat:0}}%" style="max-width: {{ wine.ageing_progress|floatformat:0 }}%;"></div>
+                </div>
+            </div>
         </div>
         
     </div>
