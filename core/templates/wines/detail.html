@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/base.css' %}" />
+{% endblock %}
+{% block content %}
+<div class="wine-bottle-container">
+    <img
+        src="{% static 'images/red-wine-bottle-3.svg' %}" alt="CellarMe Logo"
+        class="wine-bottle-image"
+    />
+    <div class="overlay flex flex-col justify-center items-center tenor-sans-regular">
+        <p class="mb-4">{{ wine.producer }}</p>
+        <img
+            src="{% static 'images/tree-svgrepo-com.svg' %}" alt="Wine Bottle Logo"
+            class="w-[75px] h-[75px] mb-4"
+        />
+        <p class="text-xs">{{ wine.year }}</p>
+        <p class="italic">{{ wine.region }}</p>
+        <p>{{ wine.variety}}</p>
+    </div>
+</div>
+<div class="wine-detail-container">
+    <div class="separator w-[420px]"></div>
+    <div class="wine-details w-[800px] flex flex-col gap-12">
+        <div class="flex flex-row justify-between">
+            <div class="region-details w-[370px] h-[350px]">
+                <h1>{{ wine.producer }} {{ wine.variety }} {{ wine.year }}</h1>
+                <p>A {{ wine.style }} wine from {{ wine.region }}, {{wine.country}}</p>
+                <div class="wine-actions">
+                    <a href="{% url 'wine-update' wine.id %}" class="btn warn">Edit</a>
+                    <a href="{% url 'wine-delete' wine.id %}" class="btn danger">Delete</a>
+                </div>
+            </div>
+            <div class="misc-image-container w-[370px] h-[350px]">
+                <p>Image PLaceholder</p>
+            </div>
+        </div>
+        <div class="timeline-container h-[250px]">
+            <p>Timeline coming soon ---------------------------------------------------------------</p>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}
