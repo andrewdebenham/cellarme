@@ -33,7 +33,23 @@ def user_logout(request):
 
 @login_required
 def wine_index(request):
+    query = request.GET.get('q', '')
     wines = request.user.wine_set.all()
+    if query:
+        # Filter wines based on search query
+        wines = wines.filter(
+            producer__icontains=query
+        ) | wines.filter(
+            variety__icontains=query
+        ) | wines.filter(
+            year__icontains=query
+        ) | wines.filter(
+            style__icontains=query
+        ) | wines.filter(
+            country__icontains=query
+        ) | wines.filter(
+            region__icontains=query
+        )
     return render(request, 'wines/index.html', {'wines': wines})
 
 class WineCreate(LoginRequiredMixin, CreateView):
