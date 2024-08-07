@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Wine
 from .forms import WineForm
+from .utils import geocode_location
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView
 from django.contrib.auth.views import LoginView
@@ -47,7 +48,10 @@ class WineCreate(LoginRequiredMixin, CreateView):
 @login_required
 def wine_detail(request, wine_id):
     wine = Wine.objects.get(id=wine_id)
-    return render(request, 'wines/detail.html', {'wine': wine})
+    coordinates = geocode_location(wine.country, wine.region)
+    if not coordinates:
+        coordinates = [-74.5, 40]
+    return render(request, 'wines/detail.html', {'wine': wine, 'coordinates': coordinates})
 
 class WineUpdate(LoginRequiredMixin, UpdateView):
     model = Wine
