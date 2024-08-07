@@ -4,31 +4,42 @@
 <link rel="stylesheet" href="{% static 'css/base.css' %}" />
 {% endblock %}
 {% block content %}
-    <div class="divider"></div>
-    <h1 class="text-white text-3xl mb-10">Wine List</h1>
-    <!-- <img src="{% static 'images/cool-cat.svg' %}" alt="A cool cat" />
+<!-- <h1 class="text-white text-3xl mb-10">Wine List</h1> -->
+<!-- <img src="{% static 'images/cool-cat.svg' %}" alt="A cool cat" />
     <img src="{% static 'images/happy-cat.svg' %}" alt="A happy cat" />
     <img src="{% static 'images/teacup-cat.svg' %}" alt="A cat in a teacup" />
     <img src="{% static 'images/cat-in-box.svg' %}" alt="A cat in a box" /> -->
-    
-    
-    <div class="wine-card-container pl-10">
-        {% for wine in wines %}
-            <div class="wine-card flex items-center justify-center w-[260px] h-[310px]">
-                <a href="{% url 'wine-detail' wine.id %}">
-                    <div class="card-content flex items-center justify-center flex-col">
-                        <div class="card-img-container">
-                            <img
-                                src="{% static 'images/wine-bottle-svgrepo-com.svg' %}"
-                                alt="CellarMe Logo"
-                            />
-                        </div>
-                        <h2 class="card-title">{{ wine.producer }} {{ wine.variety }} {{ wine.year }}</h2>
-                    </div>
-                </a>
+
+
+<div class="wine-card-container">
+    {% for wine in wines %}
+    <a href="{% url 'wine-detail' wine.id %}">
+        <div class="wine-card flex flex-col justify-between h-[100px]">
+            <div class="flex flex-col justify-start">
+                {% if wine.style == 'Red' %}
+                <img src="{% static 'images/red-wine-bottle-cropped.png' %}" alt="CellarMe Logo"
+                    class="wine-card-image w-[40px] h-[140px]" />
+                {% else %}
+                <img src="{% static 'images/white-wine-bottle-cropped.png' %}" alt="CellarMe Logo"
+                    class="wine-card-image w-[40px] h-[140px]" />
+                {% endif %}
+                <div class="card-title flex flex-row justify-between">
+                    <h2 class=>{{ wine.producer }} {{ wine.variety }} {{ wine.year }}</h2>
+                    <p class="text-sm">{{ wine.ready_date|timeuntil }} remaining.</p>
+                </div>
             </div>
-        {% endfor %}
-    </div>
+            <div class="mini-graph w-[850px]">
+                <div class="mini-graph-bar">
+                    <div class="mini-graph-per" per="{{wine.ready_date|timeuntil}} remaining"
+                        style="max-width: {{ wine.ageing_progress|floatformat:0 }}%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
 
 
 {% endblock %}

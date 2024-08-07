@@ -2,6 +2,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Tenor Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 main {
@@ -13,12 +16,11 @@ main {
 
 body {
     min-height: 100vh;
-    background-color: wheat;
     margin: 0;
-    /* background-image: url('../images/background-one.jpg');
+    background-image: url('../images/background-3.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center; */
+    background-position: center;
     --nav-bg: rgba(104, 197, 248, 0.7);
     --nav-bg-ff: rgba(104, 197, 248, 0.9);
     --borders: rgb(36, 116, 248) solid 2px;
@@ -37,6 +39,8 @@ body {
     --font-l: 1.8rem;
     --font-reg: 1.6rem;
     --card-border-radius: 6px;
+    --text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+    --text-white: #fff;
 }
 
 /* Home and Base */
@@ -58,7 +62,7 @@ body {
     left: 0;
     width: 100%;
     padding: 20px 100px;
-    background: seagreen;
+    background: transparent;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -73,17 +77,18 @@ body {
 }
 
 .navbar a,
-form {
+.navbar form {
     position: relative;
     font-size: 18px;
-    color: #fff;
+    color: var(--text-white);
+    text-shadow: var(--text-shadow);
     font-weight: 500;
     text-decoration: none;
     margin-left: 40px;
 }
 
 .navbar a::before,
-form::before {
+.navbar form::before {
     content: '';
     position: absolute;
     top: 100%;
@@ -95,7 +100,7 @@ form::before {
 }
 
 .navbar a:hover::before,
-form:hover::before {
+.navbar form:hover::before {
     width: 100%;
 }
 
@@ -144,16 +149,21 @@ form:hover::before {
 
 .wine-card-container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 100px;
 }
 
 .wine-card {
+    position: relative;
     border-radius: 5px;
-    padding: 0.5rem;
     transition: .5s;
-    text-align: center;
+    text-align: left;
+    color: var(--text-white);
+    text-shadow: var(--text-shadow);
+    background-color: rgba(173, 142, 101, 0.75);
     box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
 }
 
 .wine-card:hover {
@@ -162,24 +172,152 @@ form:hover::before {
     transform: scale(1.05);
 }
 
+.wine-card-image {
+    transform: rotate(90deg);
+    position: absolute;
+    top: -40px;
+    left: 60px;
+}
+
+.card-title {
+    margin: 17px 0 10px 150px;
+    padding-left: 15px;
+    padding-right: 10px;
+    font-size: 18px;
+}
+
+/* .mini-graph {
+    background-color: rgba(173, 142, 101, 0.4);
+    border-radius: 30px;
+} */
+
+.mini-graph-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-white);
+    text-shadow: var(--text-shadow);
+    text-transform: uppercase;
+}
+
+.mini-graph-bar {
+    height: 14px;
+    background: #282828;
+    border-radius: 3px;
+    margin: 16px 30px 40px 17px;
+}
+
+.mini-graph-per {
+    height: 14px;
+    background: #d13639;
+    border-radius: 3px;
+    position: relative;
+    animation: fillBars 3s 1;
+    text-shadow: none;
+    color: black;
+}
+
+/* .mini-graph-per::before {
+    content: attr(per);
+    position: absolute;
+    padding: 4px 6px;
+    background: #f1f1f1;
+    border-radius: 4px;
+    font-size: 12px;
+    top: -35px;
+    right: 0;
+    transform: translateX(50%);
+}
+
+.mini-graph-per::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #f1f1f1;
+    top: -16px;
+    right: 0;
+    transform: translateX(50%) rotate(45deg);
+    border-radius: 2px;
+} */
+
 /* Wine Detail */
 
 .wine-detail-container {
     display: flex;
+    background-color: rgba(173, 142, 101, 0.75);
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    border-radius: 40px;
+    padding-left: 50px;
+}
+
+.wine-tiles-container {
+    display: flex;
     width: 100%;
     height: 100%;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
     border-radius: 20px;
-    margin-top: 150px;
-    padding: 20px;
+    padding-right: 30px;
+}
+
+.wine-detail-header {
+    font-size: 24px;
+    color: var(--text-white);
+    text-shadow: var(--text-shadow);
+}
+
+.wine-detail-btn {
+    border-radius: 5px;
+    transition: .5s;
+    text-shadow: var(--text-shadow);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.wine-detail-btn:hover {
+    transition: .7s;
+    box-shadow: 6px 2px 3px rgba(0, 0, 0, 0.5);
+    transform: scale(1.05);
 }
 
 .wine-bottle-container {
+    margin-right: 40px;
+    position: relative;
+}
+
+.wine-bottle-image {
+    max-height: 110vh;
+}
+
+.red-overlay {
+    position: absolute; /* Position the overlay absolutely within the container */
+    top: 58%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Offset the element's own size to truly center it */
+    padding: 10px; /* Optional: Add padding inside the overlay */
+    text-align: center; /* Center text horizontally within the overlay */
+    z-index: 1; /* Ensure the overlay appears above the image */
+    width: 75%;
+}
+
+.white-overlay {
+    position: absolute; /* Position the overlay absolutely within the container */
+    top: 71%; /* Center vertically */
+    left: 47%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Offset the element's own size to truly center it */
+    padding: 10px; /* Optional: Add padding inside the overlay */
+    text-align: center; /* Center text horizontally within the overlay */
+    z-index: 1; /* Ensure the overlay appears above the image */
+    width: 75%;
+}
+
+/* .wine-bottle-container {
     position: absolute;
     top: 0;
     bottom: 0;
-    left: -180px;
+    left: -50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -197,7 +335,7 @@ form:hover::before {
 .red-overlay {
     position: absolute;
     top: calc(50% + 75px);
-    left: calc(50% - 10px);
+    left: calc(50% - 410px);
     transform: translate(-50%, -50%);
     color: black;
     padding: 20px;
@@ -222,12 +360,20 @@ form:hover::before {
     .wine-year {
         font-size: 12px;
     }
+} */
+
+.image-container,
+.map-container,
+.winery-image,
+.progress-container {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
 }
 
-.region-details,
-.misc-image-container,
-.timeline-container {
-    background-color: rgba(0, 0, 0, 0.4);
+.progress-container {
+    padding: 20px;
+    color: var(--text-white);
+    text-shadow: var(--text-shadow);
 }
 
 .tenor-sans-regular {
@@ -239,15 +385,17 @@ form:hover::before {
 .graph-name {
     font-size: 18px;
     font-weight: 700;
-    color: #282828;
+    color: var(--text-white);
+    text-shadow: var(--text-shadow);
     text-transform: uppercase;
-    margin: 20px 0;
+    margin: 20px 0 60px 0;
 }
 
 .graph-bar {
     height: 14px;
     background: #282828;
     border-radius: 3px;
+    margin-bottom: 40px;
 }
 
 .graph-per {
@@ -256,6 +404,8 @@ form:hover::before {
     border-radius: 3px;
     position: relative;
     animation: fillBars 3s 1;
+    text-shadow: none;
+    color: black;
 }
 
 .graph-per::before {

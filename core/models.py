@@ -20,7 +20,7 @@ class Wine(models.Model):
         return f"{self.producer} {self.variety} {self.year}"
 
     def get_absolute_url(self):
-        return reverse('wine-index') # todo: change to wine-detail (add kwargs)
+        return reverse('wine-detail', kwargs={'wine_id': self.id})
 
     @property
     def ageing_progress(self):
@@ -31,3 +31,10 @@ class Wine(models.Model):
             progress = (time_stored.days / total_days) * 100
             return min(progress, 100)
         return 0
+
+    @property
+    def ready_date(self):
+        if self.storage_date:
+            ready_to_drink_date = self.storage_date + timedelta(days=self.months_for_storage * 30)
+            return ready_to_drink_date
+        return None
