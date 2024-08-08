@@ -2,17 +2,16 @@
 {% load static %}
 
 {% block content %}
-<div class="page-header">
+<div class="confirm-delete-container">
   <h1>Delete Wine?</h1>
-  <img src="{% static 'images/wine-bottle-svgrepo-com.svg' %}" alt="CellarMe Logo" />
+  <h2>Are you sure you want to delete {{ wine.producer }} {{ wine.variety }} {{ wine.year }}?</h2>
+  
+  <form method="post" class="confirm-delete">
+    {% csrf_token %}
+    <a href="{% url 'wine-detail' wine.id %}" class="btn">Cancel</a>
+    <button type="submit" class="btn">Yes - Delete</button>
+  </form>
 </div>
 
-<h2>Are you sure you want to delete {{ wine.producer }} {{ wine.variety }}?</h2>
-
-<form method="post" class="form">
-  {% csrf_token %}
-  <a href="{% url 'wine-detail' wine.id %}" class="btn secondary">Cancel</a>
-  <button type="submit" class="btn danger">Yes - Delete</button>
-</form>
 
 {% endblock %}

@@ -6,18 +6,14 @@
 {% endblock %} 
 
 {% block content %}
-<div class="wine-form-container flex flex-col">
-    <div class="divider"></div>
-    <div class="page-header">
+<div class="wine-form-container">
         {% if wine %}
             <h1>Edit {{ wine.producer }} {{ wine.variety }} {{ wine.year }}</h1>
         {% else %}
             <h1>Add a Wine</h1>
-            {% endif %}
-        <!-- <img src="{% static 'images/wine-bottle-svgrepo-com.svg' %}" alt="CellarMe logo"> -->
-    </div>
+        {% endif %}
     
-    <form method="post" class="login w-[800px]">
+    <form method="post" class="wine-form">
         {% csrf_token %}
         <table>
             {{ form.as_table }}

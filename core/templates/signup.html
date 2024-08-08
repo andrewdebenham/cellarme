@@ -1,22 +1,27 @@
-{% extends 'base.html' %} 
-{% load static %} 
+{% extends 'base.html' %}
+{% load static %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/base.css' %}" />
-{% endblock %} 
+{% endblock %}
 {% block content %}
-<div class="page-header">
-  <h1>Sign Up</h1>
-  <img src="{% static 'images/wine-bottle-svgrepo-com.svg' %}" alt="CellarMe Logo" />
+
+<div class="signup-container">
+  <div class="logo-container">
+    <h1 class="home-logo">CellarMe</h1>
+  </div>
+  <div class="signup-form-container">
+    <h1>Sign Up</h1>
+
+    {% if error_message %}
+    <p class="red-text">{{ error_message }}</p>
+    {% endif %}
+    <form action="" method="post" class="signup" autocomplete="off">
+      {% csrf_token %}
+      <table>
+        {{ form.as_table }}
+      </table>
+      <button type="submit" class="btn submit">Submit!</button>
+    </form>
+  </div>
 </div>
-{% if error_message %}
-  <p class="red-text">{{ error_message }}</p>
-{% endif %}
-<form action="" method="post" class="form-container" autocomplete="off">
-  {% csrf_token %}
-  <table>
-    {{ form.as_table }}
-  </table>
-  <button type="submit" class="btn submit">Submit!</button>
-</form>
 
 {% endblock %}

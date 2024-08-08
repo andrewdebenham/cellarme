@@ -17,10 +17,13 @@ main {
 body {
     min-height: 100vh;
     margin: 0;
-    background-image: url('../images/background-3.jpeg');
+    background-image: url('../images/background-5.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    background-attachment: fixed;
+    border-left: 50px solid #685143;
+    border-right: 50px solid #685143;
     --nav-bg: rgba(104, 197, 248, 0.7);
     --nav-bg-ff: rgba(104, 197, 248, 0.9);
     --borders: rgb(36, 116, 248) solid 2px;
@@ -38,53 +41,70 @@ body {
     --font-xl: 2.4rem;
     --font-l: 1.8rem;
     --font-reg: 1.6rem;
+    --font-sm: 1.2rem;
     --card-border-radius: 6px;
     --text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
     --text-white: #fff;
+    --logo-color: #F7D08D;
+    --container-color: rgba(173, 142, 101, 0.85);
 }
 
 /* Home and Base */
-
-.login-container,
-.logo-container {
-    width: 100%;
-    padding: 10px 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 150px;
-}
 
 .header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 20px 100px;
-    background: transparent;
+    padding: 15px 100px;
+    background: linear-gradient(to top, #22140B, #775D4E);
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
 }
 
-.logo {
-    font-size: 32px;
-    color: #fff;
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    background: linear-gradient(to bottom, #22140B, #775D4E);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    color: #F7D08D;
+}
+
+.logo, .home-logo {
+    font-size: 36px;
+    font-family: 'Parisienne', cursive;
+    color: #F7D08D;
+    text-shadow: var(--text-shadow);
     text-decoration: none;
     font-weight: 700;
+}
+
+.home-logo {
+    font-size: 68px;
+    margin-bottom: 30px;
 }
 
 .navbar a,
 .navbar form {
     position: relative;
     font-size: 18px;
-    color: var(--text-white);
+    color: #F7D08D;
     text-shadow: var(--text-shadow);
     font-weight: 500;
     text-decoration: none;
     margin-left: 40px;
+}
+
+.navbar form>button {
+    text-shadow: var(--text-shadow);
 }
 
 .navbar a::before,
@@ -95,7 +115,7 @@ body {
     left: 0;
     width: 0;
     height: 2px;
-    background: #fff;
+    background: var(--logo-color);
     transition: 0.3s;
 }
 
@@ -104,16 +124,32 @@ body {
     width: 100%;
 }
 
+.login-container,
+.logo-container {
+    width: 100%;
+    padding: 10px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 150px;
+    color: var(--logo-color);
+}
+
 .login {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 80%;
+    background-color: var(--container-color);
+    border-radius: 40px;
+    padding: 30px;
+    color: var(--text-white);
+    text-shadow: var(--text-shadow);
 }
 
 .login h1 {
-    font-size: clamp(3.2rem, 3vw, 4.8rem);
+    font-size: var(--font-reg);
     margin: 10px 0;
 }
 
@@ -130,25 +166,88 @@ body {
 }
 
 .login input {
-    font-size: var(--font-l);
+    font-size: var(--font-sm);
     padding: 2px 4px;
     color: black;
+    margin-bottom: 15px;
+    border-radius: 10px;
 }
 
 .login .btn {
     align-self: flex-end;
     margin-right: 0;
     margin-top: 16px;
+    text-shadow: var(--text-shadow);
 }
 
 .divider {
     height: 90px;
 }
 
+/* Sign Up */
+
+.signup-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    justify-self: center;
+    background-color: var(--container-color);
+    border-radius: 40px;
+    padding: 30px;
+    color: var(--text-white);
+    text-shadow: var(--text-shadow);
+}
+
+.signup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-form-container h1 {
+    font-size: var(--font-reg);
+    margin-bottom: 10px;
+}
+
+.signup>p {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 14px 0 0px;
+}
+
+.signup th {
+    display: flex;
+    margin-right: 50px;
+}
+
+.signup label {
+    font-size: var(--font-sm);
+    margin-bottom: 6px;
+}
+
+.signup input {
+    font-size: var(--font-sm);
+    padding: 2px 4px;
+    color: black;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.signup .btn {
+    align-self: flex-end;
+    margin-right: 0;
+    margin-top: 16px;
+    text-shadow: var(--text-shadow);
+}
+
 /* Wine List */
 
 .index-container {
-    margin-top: 100px;
+    margin-top: 140px;
 }
 
 .wine-search-input {
@@ -170,7 +269,7 @@ body {
     text-align: left;
     color: var(--text-white);
     text-shadow: var(--text-shadow);
-    background-color: rgba(173, 142, 101, 0.75);
+    background-color: var(--container-color);
     box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.5);
     overflow: hidden;
 }
@@ -248,11 +347,82 @@ body {
     border-radius: 2px;
 } */
 
+/* Wine Form */
+
+.wine-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    justify-self: center;
+    background-color: var(--container-color);
+    border-radius: 40px;
+    padding: 15px 30px 30px 30px;
+    color: var(--text-white);
+    text-shadow: var(--text-shadow);
+    margin-top: 100px;
+}
+
+.wine-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wine-form-container h1 {
+    font-size: var(--font-reg);
+    margin-bottom: 10px;
+}
+
+.wine-form>p {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 14px 0 0px;
+}
+
+.wine-form label {
+    font-size: var(--font-reg);
+    margin-bottom: 6px;
+    font-size: var(--font-sm);
+
+}
+
+.wine-form input {
+    font-size: var(--font-reg);
+    padding: 4px 6px;
+    color: black;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    font-size: var(--font-sm);
+
+}
+
+.wine-form .btn {
+    align-self: flex-end;
+    margin-right: 0;
+    margin-top: 16px;
+    text-shadow: var(--text-shadow);
+    font-size: var(--font-sm);
+}
+
+.wine-form label {
+    margin-right: 20px;
+}
+
+.wine-form tr {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 /* Wine Detail */
 
 .wine-detail-container {
     display: flex;
-    background-color: rgba(173, 142, 101, 0.75);
+    background-color: var(--container-color);
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -300,24 +470,38 @@ body {
 }
 
 .red-overlay {
-    position: absolute; /* Position the overlay absolutely within the container */
-    top: 58%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Offset the element's own size to truly center it */
-    padding: 10px; /* Optional: Add padding inside the overlay */
-    text-align: center; /* Center text horizontally within the overlay */
-    z-index: 1; /* Ensure the overlay appears above the image */
+    position: absolute;
+    /* Position the overlay absolutely within the container */
+    top: 58%;
+    /* Center vertically */
+    left: 50%;
+    /* Center horizontally */
+    transform: translate(-50%, -50%);
+    /* Offset the element's own size to truly center it */
+    padding: 10px;
+    /* Optional: Add padding inside the overlay */
+    text-align: center;
+    /* Center text horizontally within the overlay */
+    z-index: 1;
+    /* Ensure the overlay appears above the image */
     width: 75%;
 }
 
 .white-overlay {
-    position: absolute; /* Position the overlay absolutely within the container */
-    top: 71%; /* Center vertically */
-    left: 47%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Offset the element's own size to truly center it */
-    padding: 10px; /* Optional: Add padding inside the overlay */
-    text-align: center; /* Center text horizontally within the overlay */
-    z-index: 1; /* Ensure the overlay appears above the image */
+    position: absolute;
+    /* Position the overlay absolutely within the container */
+    top: 71%;
+    /* Center vertically */
+    left: 47%;
+    /* Center horizontally */
+    transform: translate(-50%, -50%);
+    /* Offset the element's own size to truly center it */
+    padding: 10px;
+    /* Optional: Add padding inside the overlay */
+    text-align: center;
+    /* Center text horizontally within the overlay */
+    z-index: 1;
+    /* Ensure the overlay appears above the image */
     width: 75%;
 }
 
@@ -448,4 +632,39 @@ body {
     to {
         width: 100%;
     }
+}
+
+/* Wine Confirm Delete */
+
+.confirm-delete-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    justify-self: center;
+    background-color: var(--container-color);
+    border-radius: 40px;
+    padding: 15px 30px 30px 30px;
+    color: var(--text-white);
+    text-shadow: var(--text-shadow);
+    margin-top: 150px;
+    gap: 30px;
+}
+
+.confirm-delete-container h1 {
+    font-size: var(--font-reg);
+}
+
+.confirm-delete>p {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 14px 0 20px;
+}
+
+.confirm-delete .btn {
+    margin: 0 25px 0 25px;
+    text-shadow: var(--text-shadow);
+    font-size: var(--font-sm);
 }

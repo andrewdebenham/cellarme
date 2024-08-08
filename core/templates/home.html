@@ -5,21 +5,20 @@
 {% endblock %}
 {% block content %}
 
-<section class="logo-container">
-  <div>
-    <img src="{% static 'images/wine-bottle-svgrepo-com.svg' %}" alt="CellarMe Logo" />
+<div class="home-container">
+  <div class="logo-container">
+    <h1 class="home-logo">CellarMe</h1>
   </div>
-  <h1>CellarMe</h1>
-</section>
-
-{% if not user.is_authenticated %}
-<section class="login-conatiner">
-  <form action="{% url 'home' %}" method="post" class="login">
-    <h1>Login</h1>
-    {% csrf_token %} {{ form.as_p }}
-    <input type="hidden" name="next" value="{{ next }}" />
-    <button type="submit" class="btn submit">Login</button>
-  </form>
-</section>
-{% endif %}
+  
+  {% if not user.is_authenticated %}
+  <div class="login-conatiner">
+    <form action="{% url 'home' %}" method="post" class="login">
+      <h1>Login</h1>
+      {% csrf_token %} {{ form.as_p }}
+      <input type="hidden" name="next" value="{{ next }}" />
+      <button type="submit" class="btn submit">Login</button>
+    </form>
+  </div>
+  {% endif %}
+</div>
 {% endblock %}
