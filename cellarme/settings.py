@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-9q@@ez8j!6@y%1zmbd_e9)#3m_%#_yi@#(j6gov$59y#$&@7=y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -74,6 +74,7 @@ WSGI_APPLICATION = 'cellarme.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+import django_heroku
 
 DATABASES = {
     'default': {
@@ -127,3 +128,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'home'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+django_heroku.settings(locals())
