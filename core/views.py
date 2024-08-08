@@ -50,6 +50,9 @@ def wine_index(request):
         ) | wines.filter(
             region__icontains=query
         )
+    
+    if request.headers.get('HX-Request'):
+        return render(request, 'wines/_wine_list.html', {'wines': wines})    
     return render(request, 'wines/index.html', {'wines': wines})
 
 class WineCreate(LoginRequiredMixin, CreateView):
