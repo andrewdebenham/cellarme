@@ -1,3 +1,4 @@
+import random
 from django.shortcuts import render, redirect
 from .models import Wine
 from .forms import WineForm
@@ -66,11 +67,18 @@ class WineCreate(LoginRequiredMixin, CreateView):
 
 @login_required
 def wine_detail(request, wine_id):
+    winery_images = [
+        '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg',
+        '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg',
+        '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg',
+    ]
+    random_image = random.choice(winery_images)
+
     wine = Wine.objects.get(id=wine_id)
     coordinates = geocode_location(wine.country, wine.region)
     if not coordinates:
         coordinates = [-74.5, 40]
-    return render(request, 'wines/detail.html', {'wine': wine, 'coordinates': coordinates})
+    return render(request, 'wines/detail.html', {'wine': wine, 'coordinates': coordinates, 'random_image': random_image})
 
 class WineUpdate(LoginRequiredMixin, UpdateView):
     model = Wine

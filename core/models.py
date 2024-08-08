@@ -9,7 +9,14 @@ class Wine(models.Model):
     producer = models.CharField(max_length=100)
     variety = models.CharField(max_length=100)
     year = models.IntegerField()
-    style = models.CharField(max_length=100)
+    style = models.CharField(
+        max_length=5,
+        choices=[
+            ('Red', 'Red'),
+            ('White', 'White'),
+        ],
+        default='Red',
+    )
     country = models.CharField(max_length=100)
     region = models.CharField(max_length=100)
     storage_date = models.DateField()

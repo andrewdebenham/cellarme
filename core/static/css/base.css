@@ -418,6 +418,15 @@ footer {
     justify-content: space-between;
 }
 
+.wine-form select {
+    font-size: var(--font-reg);
+    padding: 4px 6px;
+    color: black;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    font-size: var(--font-sm);
+}
+
 /* Wine Detail */
 
 .wine-detail-container {
@@ -445,6 +454,7 @@ footer {
     font-size: 24px;
     color: var(--text-white);
     text-shadow: var(--text-shadow);
+    padding-top: 20px;
 }
 
 .wine-detail-btn {
@@ -466,93 +476,30 @@ footer {
 }
 
 .wine-bottle-image {
-    max-height: 110vh;
+    max-height: 95vh;
 }
 
 .red-overlay {
     position: absolute;
-    /* Position the overlay absolutely within the container */
     top: 58%;
-    /* Center vertically */
     left: 50%;
-    /* Center horizontally */
     transform: translate(-50%, -50%);
-    /* Offset the element's own size to truly center it */
     padding: 10px;
-    /* Optional: Add padding inside the overlay */
     text-align: center;
-    /* Center text horizontally within the overlay */
     z-index: 1;
-    /* Ensure the overlay appears above the image */
     width: 75%;
 }
 
 .white-overlay {
     position: absolute;
-    /* Position the overlay absolutely within the container */
     top: 71%;
-    /* Center vertically */
     left: 47%;
-    /* Center horizontally */
     transform: translate(-50%, -50%);
-    /* Offset the element's own size to truly center it */
     padding: 10px;
-    /* Optional: Add padding inside the overlay */
     text-align: center;
-    /* Center text horizontally within the overlay */
     z-index: 1;
-    /* Ensure the overlay appears above the image */
     width: 75%;
 }
-
-/* .wine-bottle-container {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: -50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    width: auto;
-}
-
-.wine-bottle-image {
-    height: 85%;
-    width: auto;
-    object-fit: contain;
-    object-position: left;
-}
-
-.red-overlay {
-    position: absolute;
-    top: calc(50% + 75px);
-    left: calc(50% - 410px);
-    transform: translate(-50%, -50%);
-    color: black;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.white-overlay {
-    position: absolute;
-    top: calc(50% + 155px);
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: black;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-
-    p {
-        font-size: 14px;
-    }
-
-    .wine-year {
-        font-size: 12px;
-    }
-} */
 
 .image-container,
 .map-container,

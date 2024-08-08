@@ -14,14 +14,14 @@
         <div
             class="{% if wine.style == 'White' %}white-overlay{% else %}red-overlay{% endif %} flex flex-col justify-center items-center tenor-sans-regular">
             <p class="mb-2">{{ wine.producer }}</p>
-            <img src="{% static 'images/tree-svgrepo-com.svg' %}" alt="Wine Bottle Logo" class="w-[65px] h-[65px] mb-3" />
+            <img src="{% static 'images/tree-svgrepo-com.svg' %}" alt="Wine Bottle Logo" class="w-[55px] h-[55px] mb-3" />
             <p class="wine-year text-xs">{{ wine.year }}</p>
             <p class="italic">{{ wine.region }}</p>
             <p>{{ wine.variety}}</p>
         </div>
     </div>
     <div class="wine-tiles-container">
-        <div class="wine-details w-[800px] flex flex-col gap-12">
+        <div class="wine-details w-[800px] flex flex-col gap-8">
             <div class="wine-detail-header flex flex-row justify-between">
                 <h1 class="wine-detail-title tenor-sans-regular">{{ wine.producer }} {{ wine.variety }} {{ wine.year }}</h1>
                 <div class="wine-actions flex flex-row gap-3">
@@ -61,7 +61,7 @@
     
                     </script>
                 </div>
-                <img class="winery-image w-[370px] h-[280px]" src="{% static 'images/grapes.jpg' %}" alt="winery image">
+                <img class="winery-image w-[370px] h-[280px]" src="{% static 'images/winery/'|add:random_image %}" alt="winery image">
     
                 
             </div>
