@@ -1,27 +1,26 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block head %}
-{% endblock %}
+
 {% block content %}
 
 <div class="signup-container">
-  <div class="logo-container">
-    <h1 class="home-logo">CellarMe</h1>
-  </div>
-  <div class="signup-form-container">
-    <h1>Sign Up</h1>
+    <div class="logo-container">
+        <h1 class="home-logo">CellarMe</h1>
+    </div>
+    <div class="signup-form-container">
+        <h1>Sign Up</h1>
 
-    {% if error_message %}
-    <p class="red-text">{{ error_message }}</p>
-    {% endif %}
-    <form action="" method="post" class="signup" autocomplete="off">
-      {% csrf_token %}
-      <table>
-        {{ form.as_table }}
-      </table>
-      <button type="submit" class="btn submit">Submit!</button>
-    </form>
-  </div>
+        {% if error_message %}
+        <p class="red-text">{{ error_message }}</p>
+        {% endif %}
+        <form action="" method="post" class="signup" autocomplete="off">
+            {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+            </table>
+            <button type="submit" class="btn submit">Submit!</button>
+        </form>
+    </div>
 </div>
 
 {% endblock %}

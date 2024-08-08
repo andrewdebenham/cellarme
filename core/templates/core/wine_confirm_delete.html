@@ -1,17 +1,17 @@
-{% extends 'base.html' %}  
+{% extends 'base.html' %}
 {% load static %}
 
 {% block content %}
+
 <div class="confirm-delete-container">
   <h1>Delete Wine?</h1>
   <h2>Are you sure you want to delete {{ wine.producer }} {{ wine.variety }} {{ wine.year }}?</h2>
-  
+
   <form method="post" class="confirm-delete">
     {% csrf_token %}
     <a href="{% url 'wine-detail' wine.id %}" class="btn">Cancel</a>
     <button type="submit" class="btn">Yes - Delete</button>
   </form>
 </div>
-
 
 {% endblock %}

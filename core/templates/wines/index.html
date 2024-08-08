@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+
 <div class="index-container flex flex-col justify-center items-center">
     <form method="GET" action="{% url 'wine-index' %}" hx-get="{% url 'wine-index' %}" hx-target="#wine-list"
         hx-trigger="input delay:500ms" name="search">
@@ -10,6 +11,5 @@
 
     {% include 'wines/_wine_list.html' %}
 </div>
-
 
 {% endblock %}

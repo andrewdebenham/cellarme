@@ -36,6 +36,7 @@ def user_logout(request):
 def wine_index(request):
     query = request.GET.get('q', '')
     wines = request.user.wine_set.all()
+
     if query:
         # Filter wines based on search query
         wines = wines.filter(
@@ -52,6 +53,7 @@ def wine_index(request):
             region__icontains=query
         )
     
+    # return _wine_list partial if request is htmx
     if request.headers.get('HX-Request'):
         return render(request, 'wines/_wine_list.html', {'wines': wines})    
     return render(request, 'wines/index.html', {'wines': wines})

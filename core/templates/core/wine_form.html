@@ -1,11 +1,8 @@
 {% extends 'base.html' %} 
 {% load static %}
 
-{% block head %}
-<link rel="stylesheet" href="{% static 'css/base.css' %}" />
-{% endblock %} 
-
 {% block content %}
+
 <div class="wine-form-container">
         {% if wine %}
             <h1>Edit {{ wine.producer }} {{ wine.variety }} {{ wine.year }}</h1>
@@ -24,5 +21,6 @@
             <button type="submit" class="btn submit">Create Wine</button>
         {% endif %}
     </form>
-    {% endblock %}
 </div>
+
+{% endblock %}

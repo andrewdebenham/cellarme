@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block head %}
-<link rel="stylesheet" href="{% static 'css/base.css' %}" />
-{% endblock %}
+
 {% block content %}
+
 <div class="wine-detail-container">
     <div class="wine-bottle-container">
         {% if wine.style == 'Red' %}
@@ -11,19 +10,21 @@
         {% else %}
         <img src="{% static 'images/white-wine-bottle-cropped.png' %}" alt="CellarMe Logo" class="wine-bottle-image" />
         {% endif %}
-        <div
-            class="{% if wine.style == 'White' %}white-overlay{% else %}red-overlay{% endif %} flex flex-col justify-center items-center tenor-sans-regular">
+        <div class="{% if wine.style == 'White' %}white-overlay{% else %}red-overlay{% endif %} flex flex-col justify-center items-center tenor-sans-regular">
             <p class="mb-2">{{ wine.producer }}</p>
-            <img src="{% static 'images/tree-svgrepo-com.svg' %}" alt="Wine Bottle Logo" class="w-[55px] h-[55px] mb-3" />
+            <img src="{% static 'images/tree-svgrepo-com.svg' %}" alt="Wine Bottle Logo"
+                class="w-[55px] h-[55px] mb-3" />
             <p class="wine-year text-xs">{{ wine.year }}</p>
             <p class="italic">{{ wine.region }}</p>
             <p>{{ wine.variety}}</p>
         </div>
     </div>
+
     <div class="wine-tiles-container">
         <div class="wine-details w-[800px] flex flex-col gap-8">
             <div class="wine-detail-header flex flex-row justify-between">
-                <h1 class="wine-detail-title tenor-sans-regular">{{ wine.producer }} {{ wine.variety }} {{ wine.year }}</h1>
+                <h1 class="wine-detail-title tenor-sans-regular">{{ wine.producer }} {{ wine.variety }} {{ wine.year }}
+                </h1>
                 <div class="wine-actions flex flex-row gap-3">
                     <a href="{% url 'wine-update' wine.id %}" class="wine-detail-btn">
                         <img src="{% static 'images/edit-2.svg' %}" alt="Edit button" class="w-[40px] h-[40px]">
@@ -38,33 +39,29 @@
                     <script>
                         mapboxgl.accessToken = 'pk.eyJ1IjoiYW5kcmV3ZGViZW5oYW0iLCJhIjoiY2x6ajJ3cXp2MG1iazJqcHI5ZXFocmJyNCJ9.4IMVFlxsyqClkhiFYl81fA';
                         const map = new mapboxgl.Map({
-                            container: 'map', // container ID
-                            style: 'mapbox://styles/mapbox/streets-v12', // style URL
-                            center: {{ coordinates }}, // starting position [lng, lat]
-                            zoom: 9 // starting zoom
+                            container: 'map',
+                            style: 'mapbox://styles/mapbox/streets-v12',
+                            center: {{ coordinates }},
+                        zoom: 9
                         });
-    
-                        // Create a marker and set its position
+
                         const marker = new mapboxgl.Marker()
-                            .setLngLat({{coordinates}})
+                            .setLngLat({{ coordinates }})
                             .addTo(map);
-    
-                        // Create a popup and set its content
+                        
                         const popup = new mapboxgl.Popup({ offset: 25 })
                             .setText('{{ wine.region }}, {{wine.country}}');
-    
-                        // Add the popup to the marker
+                        
                         marker.setPopup(popup);
-    
-                        // Optionally, open the popup by default
                         popup.addTo(map);
-    
                     </script>
                 </div>
-                <img class="winery-image w-[370px] h-[280px]" src="{% static 'images/winery/'|add:random_image %}" alt="winery image">
-    
-                
+
+                <img class="winery-image w-[370px] h-[280px]" src="{% static 'images/winery/'|add:random_image %}"
+                    alt="winery image"
+                >
             </div>
+            
             <div class="progress-container h-[250px] flex flex-col">
                 <div class="graph">
                     <div class="graph-name">Ageing Progress</div>
@@ -74,11 +71,13 @@
                     </div>
                 </div>
                 <div class="progress-details">
-                    <p class="mt-3">You've stored this wine for {{wine.storage_date|timesince}}. It will be ready to drink in {{ wine.ready_date|timeuntil }}.</p>
+                    <p class="mt-3">You've stored this wine for {{wine.storage_date|timesince}}. It will be ready to
+                        drink in {{ wine.ready_date|timeuntil }}.</p>
                 </div>
             </div>
-    
+
         </div>
     </div>
 </div>
+
 {% endblock %}

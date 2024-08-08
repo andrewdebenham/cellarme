@@ -45,3 +45,6 @@ class Wine(models.Model):
             ready_to_drink_date = self.storage_date + timedelta(days=self.months_for_storage * 30)
             return ready_to_drink_date
         return None
+
+    class Meta:
+        ordering = ['-storage_date']
