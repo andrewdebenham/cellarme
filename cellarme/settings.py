@@ -31,7 +31,6 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'tailwind',
     'core',
     'django.contrib.admin',
     'django.contrib.auth',
