@@ -249,6 +249,7 @@ footer {
 
 .index-container {
     margin-top: 140px;
+    margin-bottom: 90px;
 }
 
 .wine-search-input {
@@ -455,13 +456,14 @@ footer {
 
 .red-overlay {
     position: absolute;
-    top: 58%;
+    top: 59%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 10px;
+    padding: 5px;
     text-align: center;
     z-index: 1;
     width: 75%;
+    font-size: 14px;
 }
 
 .white-overlay {
@@ -469,10 +471,11 @@ footer {
     top: 71%;
     left: 47%;
     transform: translate(-50%, -50%);
-    padding: 10px;
+    padding: 5px;
     text-align: center;
     z-index: 1;
     width: 75%;
+    font-size: 14px;
 }
 
 .image-container,

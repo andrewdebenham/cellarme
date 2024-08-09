@@ -4,6 +4,8 @@
 {% block content %}
 
 <div class="index-container flex flex-col justify-center items-center">
+
+    <!-- Search Input -->
     <form method="GET" action="{% url 'wine-index' %}" hx-get="{% url 'wine-index' %}" hx-target="#wine-list"
         hx-trigger="input delay:500ms" name="search">
         <input class="wine-search-input" type="text" name="q" placeholder="Search..." value="{{ request.GET.q }}">
