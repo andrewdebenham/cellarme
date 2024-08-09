@@ -22,6 +22,7 @@ class Wine(models.Model):
     storage_date = models.DateField()
     months_for_storage = models.IntegerField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    ready_date = models.DateField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.producer} {self.variety} {self.year}"
@@ -39,12 +40,10 @@ class Wine(models.Model):
             return min(progress, 100)
         return 0
 
-    @property
-    def ready_date(self):
-        if self.storage_date:
-            ready_to_drink_date = self.storage_date + timedelta(days=self.months_for_storage * 30)
-            return ready_to_drink_date
-        return None
+    def save(self, *args, **kwargs):
+        if self.storage_date and self.months_for_storage:
+            self.ready_date = self.storage_date + timedelta(days=self.months_for_storage * 30)
+        super().save(*args, **kwargs)
 
     class Meta:
-        ordering = ['-storage_date']
+        ordering = ['ready_date']
